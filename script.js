@@ -1,5 +1,7 @@
-function generateDiv(amount) {
+const grid = document.querySelector(".grid");
 
+function generateDiv(amount) {
+    // Try to convert amount user input to number
     try {
         amount = Number(amount);
         if (isNaN(amount)) {
@@ -10,16 +12,28 @@ function generateDiv(amount) {
         console.error(error.message)
     }
 
-    const grid = document.querySelector(".grid");
+    // Generate div row by row, in each row generate column div
+    // Each row is a flex box
     for (let row = 0; row < amount; row++) {
+        
         const rowDiv = document.createElement("div");
         rowDiv.classList.add("row");
+
         for (let col = 0; col < amount; col++) {
+        
             const colDiv = document.createElement("div");
             colDiv.classList.add("col");
             rowDiv.appendChild(colDiv);
+        
         }
+
         grid.appendChild(rowDiv);
+    }
+}
+
+function hoverMode(e) {
+    if (e.target.classList.contains("col")) {
+        e.target.style.background = "black";
     }
 }
 
