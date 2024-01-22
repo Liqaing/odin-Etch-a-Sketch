@@ -1,6 +1,4 @@
-const grid = document.querySelector(".grid");
-
-function generateDiv(amount) {
+function generateDiv(grid, amount) {
     // Try to convert amount user input to number
     try {
         amount = Number(amount);
@@ -31,14 +29,15 @@ function generateDiv(amount) {
     }
 }
 
+// Load default grid when page is loaded
+window.addEventListener("load", () => {
+    const grid = document.querySelector(".grid");
+    generateDiv(grid, 16);
+})
+
 function hoverMode(e) {
     if (e.target.classList.contains("col")) {
         e.target.style.background = "black";
     }
 }
 
-
-// Load default grid when page is loaded
-window.addEventListener("load", () => {
-    generateDiv(16);
-})
