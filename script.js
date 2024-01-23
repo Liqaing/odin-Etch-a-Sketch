@@ -29,10 +29,21 @@ function generateDiv(grid, amount) {
     }
 }
 
-function hoverMode(e) {
-    if (e.target.classList.contains("col")) {
-        e.target.style.background = "black";
-    }
+function hoverMode(grid, color) {
+    grid.addEventListener("mouseover", (e) => {
+        if (e.target.classList.contains("col")) {
+            e.target.style.background = "black";
+        }
+    });
+}
+
+// Here
+function clickMode(grid, color) {
+    grid.addEventListener("click", (e) => {
+        if (e.target.classList.contains("col")) {
+            e.target.style.background = "black";
+        }
+    });
 }
 
 window.addEventListener("load", () => {
@@ -41,13 +52,16 @@ window.addEventListener("load", () => {
     generateDiv(grid, 16);
 
     // Add event listener to button
+    // Check which mode to enable
     const rightButtons = document.querySelector(".right");
     rightButtons.addEventListener("click", (e) => {
-        const buttonText = e.target.textContent;
-        switch (buttonText) {
+        const button = e.target;
+        switch (button.textContent) {
             case "Change Grid":
-                break;
+                 break;
             case "Hover Mode":
+                button.style.background = "#00ff00";
+                hoverMode(grid);
                 break;
             case "Click Mode":
                 break;
@@ -60,8 +74,8 @@ window.addEventListener("load", () => {
 
     const leftButtons = document.querySelector(".left");
     leftButtons.addEventListener("click", (e) => {
-        const buttonText = e.target.textContent;
-        switch (buttonText) {
+        const button = e.target;
+        switch (button.textContent) {
             case "Color Picker":
                 break;
             case "Rainbow":
@@ -74,7 +88,3 @@ window.addEventListener("load", () => {
     });
 
 });
-
-
-
-// Add event listener for when dom is load add event listener to button
