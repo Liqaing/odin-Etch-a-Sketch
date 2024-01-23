@@ -29,15 +29,52 @@ function generateDiv(grid, amount) {
     }
 }
 
-// Load default grid when page is loaded
-window.addEventListener("load", () => {
-    const grid = document.querySelector(".grid");
-    generateDiv(grid, 16);
-})
-
 function hoverMode(e) {
     if (e.target.classList.contains("col")) {
         e.target.style.background = "black";
     }
 }
 
+window.addEventListener("load", () => {
+    // Load default grid when page is loaded
+    const grid = document.querySelector(".grid");
+    generateDiv(grid, 16);
+
+    // Add event listener to button
+    const rightButtons = document.querySelector(".right");
+    rightButtons.addEventListener("click", (e) => {
+        const buttonText = e.target.textContent;
+        switch (buttonText) {
+            case "Change Grid":
+                break;
+            case "Hover Mode":
+                break;
+            case "Click Mode":
+                break;
+            case "Eraser":
+                break;
+            default:
+                break;
+        };
+    });
+
+    const leftButtons = document.querySelector(".left");
+    leftButtons.addEventListener("click", (e) => {
+        const buttonText = e.target.textContent;
+        switch (buttonText) {
+            case "Color Picker":
+                break;
+            case "Rainbow":
+                break;
+            case "clean":
+                break;
+            default:
+                break;
+        };
+    });
+
+});
+
+
+
+// Add event listener for when dom is load add event listener to button
