@@ -3,12 +3,20 @@ function generateDiv(grid, amount) {
     try {
         amount = Number(amount);
         if (isNaN(amount)) {
-            throw new Error("Invalid input")
+            throw new Error("Invalid input");
+        }
+
+        if (amount > 100) {
+            throw new Error("Grid size exceed capacity");
         }
     }
     catch (error) {
-        console.error(error.message)
+        alert(error.message);
+        console.error(error.message);
+        return;
     }
+
+    grid.innerHTML = "";
 
     // Generate div row by row, in each row generate column div
     // Each row is a flex box
@@ -37,7 +45,12 @@ function hoverMode(grid, color) {
     });
 }
 
-// Here
+function changeGrid(grid) {
+    let gridSize = prompt("Please enter grid size: ");
+    generateDiv(grid, gridSize);
+}
+
+// Here 
 function clickMode(grid, color) {
     grid.addEventListener("click", (e) => {
         if (e.target.classList.contains("col")) {
@@ -58,7 +71,8 @@ window.addEventListener("load", () => {
         const button = e.target;
         switch (button.textContent) {
             case "Change Grid":
-                 break;
+                changeGrid(grid);
+                break;
             case "Hover Mode":
                 button.style.background = "#00ff00";
                 hoverMode(grid);
